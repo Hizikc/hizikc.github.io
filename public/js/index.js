@@ -209,6 +209,30 @@ async function hashPassword(string) {
   return hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
 }
 
+// ОБНОВИ ЭТУ ФУНКЦИЮ:
+function activateAdminMode() {
+  if (adminDashboard) adminDashboard.style.display = 'block';
+  if (centerSearchContainer) {
+    centerSearchContainer.style.display = 'block';
+    if (centerSearchInput) centerSearchInput.value = '';
+  }
+
+  // Добавляем класс на весь документ — CSS сам скроет кнопку входа!
+  document.body.classList.add('admin-logged-in');
+}
+
+// НАЙДИ И ОБНОВИ ЭТОТ БЛОК (Кнопка Выйти):
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('is_admin');
+    if (adminDashboard) adminDashboard.style.display = 'none';
+    if (centerSearchContainer) centerSearchContainer.style.display = 'none';
+
+    // Убираем класс — кнопка входа сразу вернется на место
+    document.body.classList.remove('admin-logged-in');
+  });
+}
+
 // Закрыть окно авторизации и очистить поля ввода
 function closeAuthModal() {
   if (authModal) {
