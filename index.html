@@ -149,14 +149,38 @@
 		</div>
 	</div>
 
-	<!-- САМА АДМИН ПАНЕЛЬ -->
-	<div id="admin-dashboard" style="display: none; background: #111; padding: 20px; border-bottom: 2px solid #007bff;">
-		<div style="max-width: 1200px; margin: 0 auto; color: white; display: flex; gap: 15px; align-items: center;">
-			<span>⚡ Панель управления:</span>
-			<a href="https://github.com" target="_blank" style="color: #007bff;">GitHub</a>
-			<button id="logout-btn" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: auto;">Выйти</button>
+	<!-- КОМПАКТНАЯ АДМИН-ПАНЕЛЬ ХУД-СТИЛЬ -->
+	<div id="admin-dashboard" style="display: none; position: fixed; top: 15px; left: 50%; transform: translateX(-50%); width: auto; max-width: 90%; min-width: 450px; background: rgba(20, 20, 27, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 69, 0, 0.4); border-radius: 12px; box-shadow: 0 8px 32px rgba(255, 69, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.05); z-index: 99999; font-family: 'Segoe UI', Roboto, sans-serif; transition: all 0.3s ease;">
+		<div style="height: 42px; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; gap: 30px;">
+
+			<!-- Левая часть: Статус и Навигация -->
+			<div style="display: flex; align-items: center; gap: 20px;">
+				<!-- Иконка и префикс -->
+				<div style="display: flex; align-items: center; gap: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; font-size: 11px;">
+					<span style="color: #ff4500; filter: drop-shadow(0 0 4px #ff4500);">⚡</span> PANEL
+				</div>
+
+				<!-- Кнопки-ссылки -->
+				<nav style="display: flex; align-items: center; gap: 12px;">
+					<a href="https://github.com" target="_blank" style="color: #a0a5b5; text-decoration: none; font-size: 12px; font-weight: 600; padding: 4px 8px; border-radius: 6px; transition: all 0.2s;" onmouseover="this.style.color='#fff'; this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='#a0a5b5'; this.style.background='transparent'">GitHub</a>
+					<a href="https://js.org" target="_blank" style="color: #a0a5b5; text-decoration: none; font-size: 12px; font-weight: 600; padding: 4px 8px; border-radius: 6px; transition: all 0.2s;" onmouseover="this.style.color='#fff'; this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.color='#a0a5b5'; this.style.background='transparent'">JS.org</a>
+				</nav>
+			</div>
+
+			<!-- Правая часть: Кнопка выхода -->
+			<div style="display: flex; align-items: center;">
+				<button id="logout-btn" style="background: rgba(220, 53, 69, 0.1); color: #ff4d4d; border: 1px solid rgba(220, 53, 69, 0.2); padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#dc3545'; this.style.color='#fff'; this.style.borderColor='#dc3545'" onmouseout="this.style.background='rgba(220, 53, 69, 0.1)'; this.style.color='#ff4d4d'; this.style.borderColor='rgba(220, 53, 69, 0.2)'">
+					ВЫЙТИ
+				</button>
+			</div>
+
 		</div>
 	</div>
+
+
+	</div>
+	</div>
+
 
 </body>
 </html>
