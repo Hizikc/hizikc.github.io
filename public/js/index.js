@@ -181,3 +181,93 @@ $(function(){
     function(){gsap.to($cursor,{scale:1,opacity:.6});}
   );
 });
+// Переменные для элементов интерфейса
+const loginBtn = document.getElementById('login-trigger-btn');
+const authModal = document.getElementById('auth-modal');
+const authCloseBtn = document.getElementById('auth-close-btn');
+const authSubmitBtn = document.getElementById('auth-submit-btn');
+const passwordInput = document.getElementById('admin-password-input');
+const adminDashboard = document.getElementById('admin-dashboard');
+
+// Твой захешированный пароль (SHA-256)
+const CORRECT_PASSWORD_HASH = "5c1ebdb2a83af49ece0071530d54794ad6b6b1ee0e12ea84736b48f1844fef6a";
+
+// Функция для шифрования текста в SHA-256
+async function hashPassword(string) {
+  const utf8 = new TextEncoder().encode(string);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Показать админку, если пароль верный
+function activateAdminMode() {
+  adminDashboard.style.display = 'block';
+  // Смещаем панель в самый верх страницы
+  document.body.prepend(adminDashboard);
+}
+
+// Проверка сессии при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('is_admin') === 'true') {
+    activateAdminMode();
+  }
+});
+
+// Открытие модального окна при клике на замочек
+if (loginBtn) {
+  loginBtn.addEventListener('click', () => {
+    authModal.style.display = 'flex';
+    passwordInput.focus();
+  });
+}
+
+// Закрытие модального окна
+if (authCloseBtn) {
+  authCloseBtn.addEventListener('click', () => {
+    authModal.style.display = 'none';
+    passwordInput.value = '';
+  });
+}
+
+// Логика кнопки "Войти"
+if (authSubmitBtn) {
+  authSubmitBtn.addEventListener('click', async () => {
+    const enteredPassword = passwordInput.value;
+    const enteredHash = await hashPassword(enteredPassword);
+
+    if (enteredHash === CORRECT_PASSWORD_HASH) {
+      localStorage.setItem('is_admin', 'true');
+      activateAdminMode();
+      authModal.style.display = 'none';
+      passwordInput.value = '';
+    } else {
+      alert('Неверный ключ доступа!');
+      passwordInput.value = '';
+    }
+  });
+}
+
+// Кнопка "Выйти" внутри админки
+const logoutBtn = document.getElementById('logout-btn');
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('is_admin');
+    adminDashboard.style.display = 'none';
+  });
+}
+// Логика для кнопки "Показать/Скрыть пароль"
+const togglePasswordBtn = document.getElementById('toggle-password-btn');
+
+if (togglePasswordBtn && passwordInput) {
+  togglePasswordBtn.addEventListener('click', () => {
+    // Проверяем текущий тип поля ввода
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      togglePasswordBtn.textContent = '🙈'; // Меняем иконку на закрытые глаза
+    } else {
+      passwordInput.type = 'password';
+      togglePasswordBtn.textContent = '👁️'; // Возвращаем обычный глазок
+    }
+  });
+}
