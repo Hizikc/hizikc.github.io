@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   // Указываем имя репозитория, чтобы GitHub Pages правильно находил JS, CSS и картинки
-  base: '/hiz.html/',
+  base: '/',
 
   build: {
     // Папка, куда Vite соберет готовый продакшн-сайт
