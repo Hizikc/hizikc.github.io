@@ -1,0 +1,243 @@
+/* Подключаем Monaspace Krypton напрямую из проверенного веб-архива шрифтов */
+@font-face {
+  font-family: 'Monaspace Krypton';
+  /* Две точки поднимают из css/ в корень, где лежит скопированная папка fonts/ */
+  src: url('./MonaspaceKrypton-Regular-BvUFnBLo.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monaspace Krypton';
+  src: url('./MonaspaceKrypton-Bold-o5QGfQri.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Принудительно задаем шрифт абсолютно для всех тегов на странице */
+*, *::before, *::after {
+  font-family: 'Monaspace Krypton', monospace !important;
+}
+
+/* Сброс отступов браузера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Блокируем скролл */
+    background-color: #000;
+}
+
+/* Экран во всю ширину и высоту с картинкой из папки public */
+.welcome-screen {
+    width: 100%;
+    height: 100vh;
+    background: url('./Grass-PKz3qm-j.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center; /* Центр по горизонтали */
+    align-items: center;     /* Центр по вертикали */
+}
+
+/* Стиль твоего ника по центру */
+.main-nickname {
+    color: #ffffff;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Тень, чтобы текст не сливался с травой */
+}
+/* Контейнер для центрирования элементов в колонку */
+.center-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Отступ между ником и машинкой */
+}
+
+/* Стили для текста печатной машинки */
+.typewriter-container {
+    color: #ffffff;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 1.5rem;
+    min-height: 2rem; /* Фиксированная высота, чтобы страница не дергалась при стирании */
+    display: flex;
+    align-items: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Мигающий курсор */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.5rem;
+    background-color: #ffffff;
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+/* Переключатель (чекбокс) скрыт */
+.menu-checkbox {
+  display: none !important;
+}
+
+/* 1. БОЛЬШАЯ БЕЛАЯ КНОПКА В УГЛУ (ФИКСИРОВАННАЯ И ПОВЕРХ ВСЕГО) */
+.burger-button {
+  position: fixed !important;
+  top: 40px !important;
+  right: 40px !important;
+  z-index: 9999 !important;   /* Максимальный приоритет, чтобы не перекрывалась */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  width: 42px !important;
+  height: 26px !important;
+  cursor: pointer !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Белые толстые полоски кнопки */
+.burger-line {
+  display: block !important;
+  width: 100% !important;
+  height: 4px !important;        /* Толщина 4px, чтобы отчетливо горели белым */
+  background-color: #ffffff !important; /* Намертво зашиваем чистый белый цвет */
+  border-radius: 2px !important;
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* 2. ПОЛУПРОЗРАЧНОЕ МЕНЮ НА ВЕСЬ ЭКРАН */
+.side-menu {
+  position: fixed !important;
+  top: -100vh !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.65) !important; /* Полупрозрачный черный фон (65% плотности) */
+  backdrop-filter: blur(12px) !important;           /* Размытие травы сквозь фон меню */
+  -webkit-backdrop-filter: blur(12px) !important;   /* Поддержка размытия в Safari */
+  z-index: 9998 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  transition: top 0.3s ease-in-out !important;
+  font-family: 'Monaspace Krypton', monospace !important;
+}
+
+/* Контейнер ссылок */
+.menu-links {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 25px !important;
+}
+
+/* Ссылки внутри меню */
+.menu-links a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 1.8rem !important;
+  font-weight: 500 !important;
+  transition: color 0.2s !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important; /* Тень у букв, чтобы читались на размытом фоне */
+}
+
+.menu-links a:hover {
+  color: #aaaaaa !important;
+}
+
+/* 3. АНИМАЦИЯ ОТКРЫТИЯ И ТРАНСФОРМАЦИИ В КРЕСТИК */
+.menu-checkbox:checked ~ .side-menu {
+  top: 0 !important;
+}
+
+/* При открытии меню полоски крестика остаются белыми */
+.menu-checkbox:checked ~ .burger-button .burger-line {
+  background-color: #ffffff !important;
+}
+
+.menu-checkbox:checked ~ .burger-button .burger-line:nth-child(1) {
+  transform: translateY(11px) rotate(45deg) !important;
+}
+.menu-checkbox:checked ~ .burger-button .burger-line:nth-child(2) {
+  opacity: 0 !important;
+}
+.menu-checkbox:checked ~ .burger-button .burger-line:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg) !important;
+}
+/* Стили для подвала сайта (footer) */
+footer, .footer-block {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px 0;
+    width: 100%;
+}
+
+footer p, .footer-block p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.4); /* Полупрозрачный белый, чтобы не отвлекал */
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+/* Версия сайта (v0.4.0) */
+footer .version, .footer-block .version {
+    display: inline-block;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 5px;
+}
+footer, .footer-content {
+  position: absolute;
+  bottom: 20px; /* Отступ от самого низа экрана */
+  left: 50%;
+  transform: translateX(-50%); /* Идеальное центрирование по горизонтали */
+  text-align: center;
+  width: 100%;
+}
+.sidebar-links {
+  position: fixed !important;
+  left: 35px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 95 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px !important;
+}
+
+.sidebar-icon-btn {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease !important;
+}
+
+.sidebar-icon-btn img {
+  width: 24px !important;
+  height: 24px !important;
+  filter: invert(1) opacity(0.5) !important;
+  transition: filter 0.2s ease !important;
+}
+
+.sidebar-icon-btn:hover img {
+  filter: invert(1) opacity(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) !important;
+}
+
+.sidebar-icon-btn:hover {
+  transform: scale(1.1) !important;
+}

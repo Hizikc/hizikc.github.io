@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hiz</title>
+
+    <!-- ПРИНУДИТЕЛЬНАЯ ЗАГРУЗКА ШРИФТОВ ОТ КОРНЯ ПАПКИ PUBLIC -->
+    <link rel="preload" href="/krypton-regular.otf" as="font" type="font/opentype" crossorigin>
+    <link rel="preload" href="/krypton-bold.otf" as="font" type="font/opentype" crossorigin>
+
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- Стили подключаем ниже -->
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+
+    <div id="menu-container"></div>
+    <div id="links-container"></div>
+
+    <div class="welcome-screen">
+        <!-- Обернем в контейнер, чтобы текст стоял друг под другом -->
+        <div class="center-block">
+            <h1 class="main-nickname">hiz</h1>
+
+            <!-- БЛОК ДЛЯ ПЕЧАТНОЙ МАШИНКИ -->
+            <div class="typewriter-container">
+                <!-- Это слово останется на месте и не будет стираться -->
+                <span class="static-text">Я&nbsp;</span>
+                <!-- Сюда скрипт будет дописывать остальное -->
+                <span id="typewriter-text"></span><span class="cursor"></span>
+            </div>
+        </div>
+    </div>
+<div id="footer-container"></div>
+
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

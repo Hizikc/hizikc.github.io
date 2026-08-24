@@ -1,0 +1,99 @@
+<div class="hiz-card-wrapper">
+  <style>
+    /* Базовые стили для контейнера карточки, чтобы она не сжималась */
+    .hiz-card-wrapper {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: sans-serif;
+      width: 100%;
+      max-width: 340px;      /* Фиксированная ширина карточки */
+      margin: 40px auto;     /* Центрирование */
+      padding: 25px 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Стили для твоих оригинальных классов */
+    .hiz-card-info-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;              /* Небольшой отступ между строками */
+    }
+
+    .hiz-card-text-line {
+      font-size: 14px;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    /* Подзаголовки разделов (Specifications-pc:, Телы:, Уши:) */
+    .hiz-card-text-line:has(+ .hiz-card-text-subline),
+    .hiz-card-device-block p:first-child {
+      font-weight: 600;
+      color: #aaaaaa;
+      margin-top: 12px;
+    }
+
+    .hiz-card-text-subline {
+      font-size: 13px;
+      color: #dddddd;
+      margin: 0;
+    }
+
+    .hiz-card-device-block {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    /* Кастомная разделительная линия между блоками */
+    .hiz-card-divider {
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin: 10px 0;
+    }
+  </style>
+
+  <!-- Твой оригинальный контент из index.html -->
+  <div class="hiz-card-info-content">
+    <p class="hiz-card-text-line">hiz</p>
+    <p class="hiz-card-text-line">Матвей</p>
+    <p class="hiz-card-text-line">Др - 09.11</p>
+
+    <div class="hiz-card-divider"></div>
+
+    <p class="hiz-card-text-line">Specifications-pc:</p>
+    <p class="hiz-card-text-line">CPU - i3 10105F</p>
+    <p class="hiz-card-text-line">GPU - ASUS GTX 1060</p>
+    <p class="hiz-card-text-line">RAM - 16 ГБ</p>
+    <p class="hiz-card-text-line">SSD - KingSpec P3-512 (512 GB)</p>
+    <p class="hiz-card-text-line">SSD - Apacer AS350 PANTHER (120 GB)</p>
+    <p class="hiz-card-text-line">System - WIN 11 23H2</p>
+
+    <div class="hiz-card-divider"></div>
+
+    <div class="hiz-card-device-block">
+      <p class="hiz-card-text-line">Телы:</p>
+      <p class="hiz-card-text-subline">Main - Samsung A05s</p>
+      <p class="hiz-card-text-subline">Samsung M12</p>
+      <p class="hiz-card-text-subline">Samsung A10</p>
+      <p class="hiz-card-text-subline">iPhone 7</p>
+    </div>
+
+    <div class="hiz-card-divider"></div>
+
+    <div class="hiz-card-device-block">
+      <p class="hiz-card-text-line">Уши:</p>
+      <p class="hiz-card-text-subline">CMF Buds 2x</p>
+      <p class="hiz-card-text-subline">Huawei Freebuds 5i</p>
+    </div>
+
+    <div class="hiz-card-divider"></div>
+
+    <p class="hiz-card-text-line">🔺 Живу в ЕКБ</p>
+  </div>
+</div>
