@@ -1,0 +1,25 @@
+{
+  "name": "hizikc.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Hizikc/hizikc.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/Hizikc/hizikc.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Hizikc/hizikc.github.io.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "vite": "^8.3.5"
+  }
+}
