@@ -1,3 +1,4 @@
-import '../style/style.css'; 
-import '../style/footer.css';
+import '../style/style.css';
+import '../style/header.css'; 
 import '../style/hero.css';
+import '../style/footer.css';
