@@ -10,3 +10,22 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+/* Подключение шрифта */
+@font-face {
+    font-family: 'Monaspace Krypton';
+    src: url('./fonts/MonaspaceKrypton-ExtraBoldItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Monaspace Krypton';
+    src: url('./fonts/MonaspaceKrypton-ExtraBoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+*, *::before, *::after {
+    font-family: 'Monaspace Krypton', monospace !important;
+}
